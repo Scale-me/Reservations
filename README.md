@@ -1,13 +1,13 @@
 # Project Name
 
-Llaminati's Restaurant Reservation System
+Scale.me's Restaurant Reservation System
 
 ## Related Projects
 
-  - https://github.com/llaminati/Banner-Gallery
-  - https://github.com/llaminati/Menu
-  - https://github.com/llaminati/Reservations
-  - https://github.com/llaminati/Reviews
+  - https://github.com/Scale.me/Banner-Gallery
+  - https://github.com/Scale.me/Menu
+  - https://github.com/Scale.me/Reservations
+  - https://github.com/Scale.me/Reviews
 
 ## Table of Contents
 
