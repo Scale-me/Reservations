@@ -1,6 +1,6 @@
 # Project Name
 
-Llaminati's Restaurant Reservation System
+Scale.me's Restaurant Reservation System
 
 ## Related Projects
 
