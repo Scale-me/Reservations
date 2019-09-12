@@ -108,7 +108,7 @@ Sample output:
 }
 
 # GET a specifc reservation for a specific listing
-# @route: '/api/L1-L100/1000/reservations
+# @route: '/api/L1-L100/2400/reservations
 
 app.get('/api/:id/:startTime/reservations', () => {
 
@@ -138,21 +138,21 @@ Sample output:
 }
 
 # POST a specifc reservation for a specific listing
-# @route: '/api/L1-L100/1000/reservations
+# @route: '/api/L1-L100/2400/reservations
 
 app.post('/api/:id/:startTime/reservations', () => {
 
 })
 
 # PUT a specific reservation for a specific listing
-# @route: '/api/L1-L100/1000/reservations
+# @route: '/api/L1-L100/2400/reservations
 
 app.put('/api/:id/:startTime/reservations', () => {
 
 })
 
 # DELETE a specific reservation for a specific listing
-# @route: '/api/L1-L100/1000/reservations
+# @route: '/api/L1-L100/2400/reservations
 
 app.delete('/api/:id/:startTime/reservations', () => {
 
