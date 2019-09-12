@@ -61,7 +61,7 @@ Schema:
 
 # GET all reservations for a specific listing
 # @route: '/api/L1-L100/reservations
-app.get('/api/:id/reservations', () => {
+app.get('/api/reservations/:id', () => {
 
 })
 
@@ -110,7 +110,7 @@ Sample output:
 # GET a specifc reservation for a specific listing
 # @route: '/api/L1-L100/2400/reservations
 
-app.get('/api/:id/:startTime/reservations', () => {
+app.get('/api/reservations/:id/:startTime', () => {
 
 })
 
@@ -140,21 +140,21 @@ Sample output:
 # POST a specifc reservation for a specific listing
 # @route: '/api/L1-L100/2400/reservations
 
-app.post('/api/:id/:startTime/reservations', () => {
+app.post('/api/reservations/:id/:startTime', () => {
 
 })
 
 # PUT a specific reservation for a specific listing
 # @route: '/api/L1-L100/2400/reservations
 
-app.put('/api/:id/:startTime/reservations', () => {
+app.put('/api/reservations/:id/:startTime', () => {
 
 })
 
 # DELETE a specific reservation for a specific listing
 # @route: '/api/L1-L100/2400/reservations
 
-app.delete('/api/:id/:startTime/reservations', () => {
+app.delete('/api/reservations/:id/:startTime/', () => {
 
 })
 
