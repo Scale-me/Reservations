@@ -38,6 +38,41 @@ npm install
 
 Schema:
 
+{
+  Listing: L1,
+  Dates: [
+   {
+      SeatingCapacity: Number,
+      OpenHours: String,
+      Date: String,
+      Seats: [
+        {
+          Time: String,
+          Reservations: {
+            Open: Number,
+            Reserved: Number
+          }
+        }
+      ]
+    }
+  ]
+}
+
+
+create keyspace Reservations
+... with replication = {'class':'SimpleStrategy','replication_factor':2};
+
+create table Listing (
+  ListingId int,
+  Dates list<frozen map<SeatNumber,Hours,Date, Seats list<frozen map<Time, Reservations map<Open,Reserved>>>>>,
+  PRIMARY KEY (ListingId)
+);
+
+
+
+
+
+
 # GET all reservations for a specific listing
 # @route: '/api/L1-L100/reservations
 app.get('/api/reservations/:id', () => {
