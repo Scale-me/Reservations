@@ -79,17 +79,17 @@ CREATE TABLE  Listings (
 
 CREATE TABLE Dates(
     date PRIMARY KEY,
-    listing_id integer REFERENCES Listing (listing_id),
     seatnumber integer,
     hours text,
-    date_id
+    date_id,
+    FOREIGN KEY listing_id integer REFERENCES Listing (listing_id),
 );
 
 CREATE TABLE Timeslots(
   Timeslot integer,
   open_seats integer,
   reserved_seats integer,
-  date_id integer REFERENCES Dates (date_id)
+  FOREIGN KEY date_id integer REFERENCES Dates (date_id)
 )
 
 
