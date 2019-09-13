@@ -39,7 +39,7 @@ npm install
 Cassandra Schema:
 
 {
-  Listing: L1,
+  RestaurantId: L1,
   DatesOpen: [
    {
       SeatingCapacity: Number,
@@ -62,18 +62,18 @@ Cassandra Schema:
 create keyspace Reservations
 ... with replication = {'class':'SimpleStrategy','replication_factor':2};
 
-create table Listing (
-  ListingId int,
+create table Restaurants (
+  RestaurantId int,
   DatesOpen list<frozen map<SeatNumber,Hours,Date, Timeslots list<frozen map<Time, Reservations map<Open,Reserved>>>>>,
-  PRIMARY KEY (ListingId)
+  PRIMARY KEY (RestaurantId)
 );
 
 Postgresql schema:
 
 CREATE DATABASE Reservations
 
-CREATE TABLE  Listings (
-    listing_id PRIMARY KEY,
+CREATE TABLE  Restaurants (
+    restaurant_id PRIMARY KEY,
     DatesOpen text
 );
 
@@ -82,7 +82,7 @@ CREATE TABLE Dates(
     seatnumber integer,
     hours text,
     date_id,
-    FOREIGN KEY listing_id integer REFERENCES Listing (listing_id),
+    FOREIGN KEY restaurant_id integer REFERENCES Restaurants (restaurant_id),
 );
 
 CREATE TABLE Timeslots(
