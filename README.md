@@ -45,7 +45,7 @@ Cassandra Schema:
       SeatingCapacity: Number,
       OpenHours: String,
       Date: String,
-      Seats: [
+      Timeslots: [
         {
           Time: String,
           Reservations: {
@@ -85,7 +85,7 @@ CREATE TABLE Dates(
     date_id
 );
 
-CREATE TABLE Reservation(
+CREATE TABLE Timeslots(
   Timeslot integer,
   open_seats integer,
   reserved_seats integer,
