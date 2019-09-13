@@ -64,7 +64,7 @@ create keyspace Reservations
 
 create table Listing (
   ListingId int,
-  Dates list<frozen map<SeatNumber,Hours,Date, Seats list<frozen map<Time, Reservations map<Open,Reserved>>>>>,
+  DatesOpen list<frozen map<SeatNumber,Hours,Date, Timeslots list<frozen map<Time, Reservations map<Open,Reserved>>>>>,
   PRIMARY KEY (ListingId)
 );
 
