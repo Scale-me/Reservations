@@ -36,7 +36,7 @@ npm install
 
 ## API Spec
 
-Schema:
+Cassandra Schema:
 
 {
   Listing: L1,
@@ -68,8 +68,29 @@ create table Listing (
   PRIMARY KEY (ListingId)
 );
 
+Postgresql schema:
 
+CREATE DATABASE Reservations
 
+CREATE TABLE  Listings (
+    listing_id PRIMARY KEY,
+    DatesOpen text
+);
+
+CREATE TABLE Dates(
+    date PRIMARY KEY,
+    listing_id integer REFERENCES Listing (listing_id),
+    seatnumber integer,
+    hours text,
+    date_id
+);
+
+CREATE TABLE Reservation(
+  Timeslot integer,
+  open_seats integer,
+  reserved_seats integer,
+  date_id integer REFERENCES Dates (date_id)
+)
 
 
 
