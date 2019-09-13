@@ -46,11 +46,12 @@ Cassandra Schema:
       OpenHours: String,
       Date: String,
       Timeslots: [
+        // look to index each timeslot for faster lookup
         {
           Time: String,
           Reservations: {
-            Open: Number,
-            Reserved: Number
+            Open: Number, // dont need me
+            ReservedSeats: Number
           }
         }
       ]
@@ -74,20 +75,19 @@ CREATE DATABASE Reservations
 
 CREATE TABLE  Restaurants (
     restaurant_id PRIMARY KEY,
-    DatesOpen text
+    seating_capacity integer,
+    dates_open text
 );
 
 CREATE TABLE Dates(
-    date PRIMARY KEY,
-    seatnumber integer,
-    hours text,
+    date date PRIMARY KEY,
+    //hours_open text, Maybe do not need this?
     date_id,
     FOREIGN KEY restaurant_id integer REFERENCES Restaurants (restaurant_id),
 );
 
 CREATE TABLE Timeslots(
-  Timeslot integer,
-  open_seats integer,
+  time_slot time,
   reserved_seats integer,
   FOREIGN KEY date_id integer REFERENCES Dates (date_id)
 )
@@ -95,7 +95,7 @@ CREATE TABLE Timeslots(
 
 
 # GET all reservations for a specific listing
-# @route: '/api/L1-L100/reservations
+# @route: '/api/reservations/L1-L100/
 app.get('/api/reservations/:id', () => {
 
 })
@@ -103,7 +103,7 @@ app.get('/api/reservations/:id', () => {
 Sample output:
 
 # GET a specifc reservation for a specific listing
-# @route: '/api/L1-L100/2400/reservations
+# @route: '/api/reservations/L1-L100/2400/
 app.get('/api/reservations/:id/:startTime', () => {
 
 })
@@ -111,14 +111,14 @@ app.get('/api/reservations/:id/:startTime', () => {
 Sample output:
 
 # POST a specifc reservation for a specific listing
-# @route: '/api/L1-L100/2400/reservations
+# @route: '/api/reservations/L1-L100/2400
 
 app.post('/api/reservations/:id/:startTime', () => {
 
 })
 
 # PUT a specific reservation for a specific listing
-# @route: '/api/L1-L100/2400/reservations
+# @route: '/api/reservations/L1-L100/2400/
 
 app.put('/api/reservations/:id/:startTime', () => {
 
