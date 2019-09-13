@@ -40,7 +40,7 @@ Cassandra Schema:
 
 {
   Listing: L1,
-  Dates: [
+  DatesOpen: [
    {
       SeatingCapacity: Number,
       OpenHours: String,
