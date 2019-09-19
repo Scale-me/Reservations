@@ -7,30 +7,6 @@ writeUsers.write('RESTAURANT_ID,SEATING_CAPACITY,DATE_OPEN, TIME_SLOT, RESERVED_
 const startDate = new Date()
 console.log(startDate)
 
-// const startTime = moment("06:10:00", 'hh:mm');
-// const endTime = moment("08:00:00", 'hh:mm');
-
-// const csvWriter = createCsvWriter({
-//   path: './seed.csv',
-//   header: [
-//     {id: 'restaurant_id', title: 'RESTAURANT_ID'},
-//     {id: 'seating_capacity', title: 'SEATING_CAPACITY'},
-//     {id: 'date_open', title: 'DATE_OPEN'},
-//     {id: 'time_slot', title: 'TIME_SLOT'},
-//     {id: 'reserved_seats', title: 'RESERVED_SEATS'}
-//   ]
-// })
-
-// const records = [
-  // {
-  //   restaurant_id: '1',
-  //   seating_capacity: 24,
-  //   date_open: '2017-05-13',
-  //   time_slot: '13:00:00',
-  //   reserved_seats: 24
-  // }
-// ];
-
 let counter = 0;
 let number_of_records = 10000000;
 let records_remaining = number_of_records
@@ -74,23 +50,6 @@ function write(){
     // console.log('draining', counter)
     writeUsers.once('drain', write)
   }
-
-  // if (records_remaining = 0){
-  //   const endDate = new Date()
-  //   const seedTime = Math.floor((endDate.getTime() - startDate.getTime())/(1000*60));
-  //   console.log('Seed Time', `${seedTime} min`)
-  //   console.log('Records Generated',counter)
-  //   console.log('...Done');
-  // }
 }
 
 write();
-
-// csvWriter.writeRecords(records)
-//     .then(() => {
-//       const endDate = new Date()
-//       const seedTime = Math.floor((endDate.getTime() - startDate.getTime())/(1000*60))
-//       console.log('Seed Time', `${seedTime} min`)
-//       console.log('Records Generated',counter)
-//       console.log('...Done');
-//     });
