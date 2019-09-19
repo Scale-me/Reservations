@@ -38,36 +38,23 @@ npm install
 
 Cassandra Schema:
 
-{
-  RestaurantId: L1,
-  DatesOpen: [
-   {
-      SeatingCapacity: Number,
-      OpenHours: String,
-      Date: String,
-      Timeslots: [
-        // look to index each timeslot for faster lookup
-        {
-          Time: String,
-          Reservations: {
-            Open: Number, // dont need me
-            ReservedSeats: Number
-          }
-        }
-      ]
-    }
-  ]
-}
-
-
-create keyspace Reservations
+create keyspace reservations
 ... with replication = {'class':'SimpleStrategy','replication_factor':2};
 
-create table Restaurants (
-  RestaurantId int,
-  DatesOpen list<frozen map<SeatNumber,Hours,Date, Timeslots list<frozen map<Time, Reservations map<Open,Reserved>>>>>,
-  PRIMARY KEY (RestaurantId)
-);
+create table reservations.restaurants (RESTAURANT_ID int, SEATING_CAPACITY int, DATE_OPEN date, TIME_SLOT time, RESERVED_SEATS int,PRIMARY KEY ((RESTAURANT_ID, DATE_OPEN), DATE_OPEN, TIME_SLOT));
+
+Cassandra Sample data:
+
+{
+  restaurant_id: L1,
+  seating_capacity: Number,
+  date_open: date1 {
+      time_slot1: reserved_seats
+      Time_slot2: reserved_seats },
+  date_open: date2 {
+      time_slot1: reserved_seats
+      time_slot2: reserved_seats }
+}
 
 Postgresql schema:
 
@@ -77,22 +64,16 @@ CREATE TABLE  Restaurants (
     restaurant_id PRIMARY KEY,
     seating_capacity integer,
     dates_open text
-);
-
-CREATE TABLE Dates(
-    date date PRIMARY KEY,
-    //hours_open text, Maybe do not need this?
-    date_id,
-    FOREIGN KEY restaurant_id integer REFERENCES Restaurants (restaurant_id),
+    date_open_id
 );
 
 CREATE TABLE Timeslots(
   time_slot time,
-  reserved_seats integer,
-  FOREIGN KEY date_id integer REFERENCES Dates (date_id)
+  reserved_seats smallinteger,
+  FOREIGN KEY date_open_id integer REFERENCES Restaurant (date_open_id)
 )
 
-
+PostGresql Sample Data
 
 # GET all reservations for a specific listing
 # @route: '/api/reservations/L1-L100/

@@ -25,3 +25,6 @@ build/
 dist/
 
 aws-keys.json
+
+# Seed files
+database/seed.csv
