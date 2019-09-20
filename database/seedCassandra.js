@@ -5,7 +5,6 @@ writeUsers.write('RESTAURANT_ID,SEATING_CAPACITY,DATE_OPEN, TIME_SLOT, RESERVED_
 // clear CSV file of prior seeding
 
 const startDate = new Date()
-console.log(startDate)
 
 let counter = 0;
 let number_of_records = 10000000;

@@ -28,3 +28,5 @@ aws-keys.json
 
 # Seed files
 database/seed.csv
+database/seed1.csv
+database/seed2.csv

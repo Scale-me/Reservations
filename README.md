@@ -58,20 +58,11 @@ Cassandra Sample data:
 
 Postgresql schema:
 
-CREATE DATABASE Reservations
+createdb Reservations
 
-CREATE TABLE  Restaurants (
-    restaurant_id PRIMARY KEY,
-    seating_capacity integer,
-    dates_open text
-    date_open_id
-);
+CREATE TABLE restaurants(date_open_id INT PRIMARY KEY, restaurant_id INT, seating_capacity SMALLINT, date_open DATE);
 
-CREATE TABLE Timeslots(
-  time_slot time,
-  reserved_seats smallinteger,
-  FOREIGN KEY date_open_id integer REFERENCES Restaurant (date_open_id)
-)
+CREATE TABLE time_slots(time_slotId INT PRIMARY KEY, time_slot TIME, reserved_seats SMALLINT, date_open_id INT REFERENCES restaurants (date_open_id));
 
 PostGresql Sample Data
 
