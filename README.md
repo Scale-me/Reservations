@@ -41,7 +41,11 @@ Cassandra Schema:
 create keyspace reservations
 ... with replication = {'class':'SimpleStrategy','replication_factor':2};
 
-create table reservations.restaurants (RESTAURANT_ID int, SEATING_CAPACITY int, DATE_OPEN date, TIME_SLOT time, RESERVED_SEATS int,PRIMARY KEY ((RESTAURANT_ID, DATE_OPEN), DATE_OPEN, TIME_SLOT));
+create table reservations.restaurants (RESTAURANT_ID int, SEATING_CAPACITY int, DATE_OPEN date, TIME_SLOT time, RESERVED_SEATS int,PRIMARY KEY ((RESTAURANT_ID), DATE_OPEN, TIME_SLOT));
+
+Import CSV file:
+
+
 
 Cassandra Sample data:
 
@@ -66,40 +70,34 @@ CREATE TABLE time_slots(time_slotId INT PRIMARY KEY, time_slot TIME, reserved_se
 
 PostGresql Sample Data
 
-# GET all reservations for a specific listing
-# @route: '/api/reservations/L1-L100/
-app.get('/api/reservations/:id', () => {
-
-})
-
 Sample output:
 
 # GET a specifc reservation for a specific listing
-# @route: '/api/reservations/L1-L100/2400/
-app.get('/api/reservations/:id/:startTime', () => {
+# @route: '/api/1-10000000/reservations'
+app.get('/api/:id/reservations', () => {
 
 })
 
 Sample output:
 
 # POST a specifc reservation for a specific listing
-# @route: '/api/reservations/L1-L100/2400
+# @route: '/api/1-10000000/reservations'
 
-app.post('/api/reservations/:id/:startTime', () => {
+app.post('/api/:id/reservations', () => {
 
 })
 
 # PUT a specific reservation for a specific listing
-# @route: '/api/reservations/L1-L100/2400/
+# @route: '/api/1-10000000/reservations'
 
-app.put('/api/reservations/:id/:startTime', () => {
+app.put('/api/:id/reservations', () => {
 
 })
 
 # DELETE a specific reservation for a specific listing
-# @route: '/api/L1-L100/2400/reservations
+# @route: '/api/1-10000000/reservations
 
-app.delete('/api/reservations/:id/:startTime/', () => {
+app.delete('/api/:id/reservations', () => {
 
 })
 

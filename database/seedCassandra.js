@@ -18,7 +18,7 @@ function write(){
     const seating_capacity = Math.floor(Math.random()*100 + 50);
   // August
   // for (let j = 6; j <=8; j++){
-    for (let day = 1; day <=20; day++) {
+    for (let day = 1; day <=5; day++) {
       if ( day < 10){
         day = `0${day}`
       }
