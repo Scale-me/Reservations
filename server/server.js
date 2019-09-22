@@ -23,9 +23,9 @@ app.use(express.static('public'));
 // GET a specifc reservation for a specific listing
 // @route: '/api/1-10000000/reservations'
 app.get('/api/:id/reservations', (req, res) => {
-  const restaurantId = req.body.id;
-  const dateOpen = req.body.date;
-  const seatsNeeded = req.body.seatsNeeded
+  // const restaurantId = req.body.id;
+  // const dateOpen = req.body.date;
+  // const seatsNeeded = req.body.seatsNeeded
   let result = res;
   let response;
   db.query('SELECT * FROM restaurants WHERE restaurant_Id = $1 AND date_Open = $2', [restaurantId, dateOpen], (err, res) => {
@@ -41,11 +41,11 @@ app.get('/api/:id/reservations', (req, res) => {
       // return results
       // calculations done on front end/ review cassandra
       let timeSlotInfo = res.rows[0]
-      let reservation = {
+      let dataForListing = {
         restaurantInfo,
         timeSlotInfo
       }
-      result.send(reservation)
+      result.send(hello)
     })
   })
 });
@@ -91,7 +91,7 @@ app.put('/api/:id/reservations', () => {
 // DELETE a specific reservation for a specific listing
 // @route: '/api/1-10000000/reservations
 app.delete('/api/:id/reservations', () => {
-
+  // subtract from reservedSeats
 })
 
 app.listen(port, () => { console.log(`argh matey we be arriving at port ${port}`); });
