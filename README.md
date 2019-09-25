@@ -68,9 +68,14 @@ CREATE TABLE restaurants(date_open_id INT PRIMARY KEY, restaurant_id INT, seatin
 
 CREATE TABLE time_slots(time_slotId INT PRIMARY KEY, time_slot TIME, reserved_seats SMALLINT, date_open_id INT REFERENCES restaurants (date_open_id));
 
-PostGresql Sample Data
+Sample query for importing CSV file:
 
-Sample output:
+COPY restaurants(date_open_id, restaurant_id, seating_capacity, date_open) FROM 'PATH/seed1.csv' DELIMITER ',' CSV HEADER;
+
+COPY time_slots(time_slotId, time_slot, reserved_seats, date_open_id) FROM '/Users/tammymchan/Desktop/Andrew-HR/Reservations/database/seed2.csv' DELIMITER ',' CSV HEADER;
+
+# Index date_open_id to faster query
+CREATE INDEX time_slot_index on time_slots(date_open_id);
 
 # GET a specifc reservation for a specific listing
 # @route: '/api/1-10000000/reservations'

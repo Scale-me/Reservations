@@ -1,4 +1,5 @@
 const fs = require('fs')
+const moment = require('moment');
 // clear CSV file of prior seeding
 // fs.truncate('./seed.csv', 0, function(){console.log('done')})
 const startDate = new Date()
@@ -19,13 +20,10 @@ const writeRestaurants = function (writer, callback){
       records_remaining -= 1;
       restaurant_id += 1;
       const seating_capacity = Math.floor(Math.random()*100 + 50);
-    // August
+    // Next Five days
     // for (let j = 6; j <=8; j++){
-      for (let day = 1; day <=5; day++) {
-        if ( day < 10){
-          day = `0${day}`
-        }
-        const date_open = `2019-08-${day}`
+      for (let i = 0; i <=4; i++) {
+        const date_open = moment().add(i, 'day').format().slice(0,10);
         date_openId += 1;
         const restaurant = `${date_openId},${restaurant_id},${seating_capacity},${date_open}\n`
         if ( counter % 1000000 === 0){

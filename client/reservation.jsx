@@ -280,15 +280,23 @@ class Reservations extends React.Component {
       })
       .then(() => {
         const currentDay = moment().local().format().slice(0, 10);
+        console.log('line 283', currentDay)
         const currentMonth = moment().local().format('MMMM YYYY');
-        const dayTimes = this.listingData.filter((day) => {
-          const daysFile = day.Date.slice(0, 10);
+        console.log('line 284',currentMonth)
+        console.log('line 286', this.listingData)
+        //const dayTimes = this.listingData.filter((day) => {
+        const dayTimes = this.listingData['restaurantInfo'].filter((day) => {
+          // const daysFile = day.Date.slice(0, 10);
+          const daysFile = day.date_open.slice(0, 10);
+          console.log('line 289', daysFile)
           return daysFile === currentDay;
         });
+        console.log('line 293', dayTimes)
+
         this.setState({
           date: currentDay,
           month: { month: currentMonth, ISO: moment().local().format() },
-          hours: dayTimes[0].Hours,
+          hours: `${currentDay}T17:00:00-07:00--${currentDay}T20:00:00-07:00`,
           time: moment().local().startOf('day').format(),
         });
         this.getDay();
@@ -300,20 +308,21 @@ class Reservations extends React.Component {
     return fetch(`/api/${listing}/reservations`, {
       method: 'GET',
     })
-      .then((res) => (
-        res.json()
-      ))
-      .then((data) => data)
+      .then(res => res.json())
+      .then(data => data)
       .catch((err) => {
         console.log('Error with retrieving data', err);
       });
   }
 
   getDay() {
-    const dayReserves = this.listingData.filter((day) => {
-      const daysInFile = day.Date.slice(0, 10);
+    // const dayReserves = this.listingData.filter((day) => {
+    const dayReserves = this.listingData['restaurantInfo'].filter((day) => {
+      // const daysInFile = day.Date.slice(0, 10);
+      const daysInFile = day.date_open.slice(0, 10);
       return daysInFile === this.state.date;
     });
+    console.log('line 322', dayReserves)
     this.findTimeRange(dayReserves[0].Seats, this.state.time);
   }
 

@@ -106,6 +106,7 @@ NoBackButton.displayName = 'NoBackButton';
 const CalenderModule = ({
   selectDate, month, next, back, openCalender, changeShownDate,
 }) => {
+  console.log('line 110', month)
   let calender = [];
   const startDay = moment(month.ISO).clone().startOf('month').startOf('week');
   const endDay = moment(month.ISO).clone().endOf('month').add(1, 'week')
